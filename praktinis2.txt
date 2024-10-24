@@ -45,6 +45,7 @@ void fizzbuzz(int n) {
 }
 
 int main() {
+    srand(time(0));
     int pasirinkimas;
     while (true) {
         cout << "Pasirinkite funkcija:" << endl;
