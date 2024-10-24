@@ -1,0 +1,347 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    cout << fixed << setprecision(2);
+    int pasirinkimas = 0;
+    float EUR_Bendras = 1;
+
+    float GBP_Bendras = 0.8593f;
+    float GBP_Pirkti = 0.8450f;
+    float GBP_Parduoti = 0.9060f;
+
+    float USD_Bendras = 1.0713f;
+    float USD_Pirkti = 1.0547f;
+    float USD_Parduoti = 1.1309f;
+
+    float INR_Bendras = 88.8260f;
+    float INR_Pirkti = 85.2614f;
+    float INR_Parduoti = 92.8334f;
+
+    cout << "Pasirinkite viena is reikiamu paslaugu:" << endl;
+    cout << "1. Valiutos kurso palyginimas su kita valiuta." << endl;
+    cout << "2. Valiutos pardavimas." << endl;
+    cout << "3. Valiutos pirkimas." << endl;
+
+    cin >> pasirinkimas;
+
+    switch (pasirinkimas) {
+    case 1: {
+        cout << "Pasirinkite valiuta:" << endl;
+        cout << "1. EUR" << endl;
+        cout << "2. GBP" << endl;
+        cout << "3. USD" << endl;
+        cout << "4. INR" << endl;
+
+        int pasirinkimas_1 = 0;
+
+        cin >> pasirinkimas_1;
+
+        switch (pasirinkimas_1) {
+            // EUR palyginimas
+        case 1: {
+            cout << "Su kokia valiuta noretumete palyginti EUR:" << endl;
+            cout << "1. GBP" << endl;
+            cout << "2. USD" << endl;
+            cout << "3. INR" << endl;
+
+            int pasirinkimas_2 = 0;
+
+            cin >> pasirinkimas_2;
+            // EUR į GBP
+            switch (pasirinkimas_2) {
+            case 1: {
+                float kiekis = 0;
+                float EURPalyg_GBP = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                EURPalyg_GBP = kiekis * GBP_Bendras;
+
+                cout << kiekis << " EUR yra lygus: " << EURPalyg_GBP << " GBP";
+                break;
+            }
+            case 2: {
+                float kiekis = 0;
+                float EURPalyg_USD = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                EURPalyg_USD = kiekis * USD_Bendras;
+
+                cout << kiekis << " EUR yra lygus: " << EURPalyg_USD << " USD";
+                break;
+            }
+            case 3: {
+                float kiekis = 0;
+                float EURPalyg_INR = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                EURPalyg_INR = kiekis * INR_Bendras;
+
+                cout << kiekis << " EUR yra lygus: " << EURPalyg_INR << " INR";
+                break;
+            }
+            }
+            break;
+        }
+        case 2: {
+            cout << "Su kokia valiuta noretumete palyginti GBP:" << endl;
+            cout << "1. EUR" << endl;
+            cout << "2. USD" << endl;
+            cout << "3. INR" << endl;
+
+            int pasirinkimas_2 = 0;
+
+            cin >> pasirinkimas_2;
+
+            switch (pasirinkimas_2) {
+            case 1: {
+                float kiekis = 0;
+                float GBPPalyg_EUR = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                GBPPalyg_EUR = kiekis / GBP_Bendras;
+
+                cout << kiekis << " GBP yra lygus: " << GBPPalyg_EUR << " EUR";
+                break;
+            }
+            case 2: {
+                float kiekis = 0;
+                float GBPPalyg_USD = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                GBPPalyg_USD = kiekis / GBP_Bendras * USD_Bendras;
+
+                cout << kiekis << " GBP yra lygus: " << GBPPalyg_USD << " USD";
+                break;
+            }
+            case 3: {
+                float kiekis = 0;
+                float GBPPalyg_INR = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                GBPPalyg_INR = kiekis / GBP_Bendras * INR_Bendras;
+
+                cout << kiekis << " GBP yra lygus: " << GBPPalyg_INR << " INR";
+                break;
+            }
+            }
+            break;
+        }
+        case 3: {
+            cout << "Su kokia valiuta noretumete palyginti USD:" << endl;
+            cout << "1. EUR" << endl;
+            cout << "2. GBP" << endl;
+            cout << "3. INR" << endl;
+
+            int pasirinkimas_2 = 0;
+
+            cin >> pasirinkimas_2;
+
+            switch (pasirinkimas_2) {
+            case 1: {
+                float kiekis = 0;
+                float USDPalyg_EUR = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                USDPalyg_EUR = kiekis / USD_Bendras;
+
+                cout << kiekis << " USD yra lygus: " << USDPalyg_EUR << " EUR";
+                break;
+            }
+            case 2: {
+                float kiekis = 0;
+                float USDPalyg_GBP = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                USDPalyg_GBP = kiekis / USD_Bendras * GBP_Bendras;
+
+                cout << kiekis << " USD yra lygus: " << USDPalyg_GBP << " GBP";
+                break;
+            }
+            case 3: {
+                float kiekis = 0;
+                float USDPalyg_INR = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                USDPalyg_INR = kiekis / USD_Bendras * INR_Bendras;
+
+                cout << kiekis << " USD yra lygus: " << USDPalyg_INR << " INR";
+                break;
+            }
+            }
+            break;
+        }
+        case 4: {
+            cout << "Su kokia valiuta noretumete palyginti INR:" << endl;
+            cout << "1. EUR" << endl;
+            cout << "2. GBP" << endl;
+            cout << "3. USD" << endl;
+
+            int pasirinkimas_2 = 0;
+            cin >> pasirinkimas_2;
+
+            switch (pasirinkimas_2) {
+            case 1: {
+                float kiekis = 0;
+                float INRPalyg_EUR = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                INRPalyg_EUR = kiekis / INR_Bendras;
+
+                cout << kiekis << " INR yra lygus: " << INRPalyg_EUR << " EUR";
+                break;
+            }
+            case 2: {
+                float kiekis = 0;
+                float INRPalyg_GBP = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                INRPalyg_GBP = kiekis / INR_Bendras * GBP_Bendras;
+
+                cout << kiekis << " INR yra lygus: " << INRPalyg_GBP << " GBP";
+                break;
+            }
+            case 3: {
+                float kiekis = 0;
+                float INRPalyg_USD = 0;
+
+                cout << "Iveskite kieki:" << endl;
+                cin >> kiekis;
+
+                INRPalyg_USD = kiekis / INR_Bendras * USD_Bendras;
+
+                cout << kiekis << " INR yra lygus: " << INRPalyg_USD << " USD";
+                break;
+            }
+            }
+            break;
+        }
+        }
+        break;
+    }
+    case 2: {
+        cout << "Kuria valiuta norite parduoti:" << endl;
+        cout << "1. GBP" << endl;
+        cout << "2. USD" << endl;
+        cout << "3. INR" << endl;
+
+        int pasirinkimas_1 = 0;
+        cin >> pasirinkimas_1;
+
+        switch (pasirinkimas_1) {
+        case 1: {
+            cout << "Iveskite kieki:" << endl;
+
+            float kiekis = 0;
+            float GBP_pardavimas = 0;
+            cin >> kiekis;
+
+            GBP_pardavimas = kiekis * GBP_Parduoti;
+
+            cout << kiekis << " GBP yra lygus: " << GBP_pardavimas << " EUR";
+            break;
+        }
+        case 2: {
+            cout << "Iveskite kieki:" << endl;
+
+            float kiekis = 0;
+            float USD_pardavimas = 0;
+            cin >> kiekis;
+
+            USD_pardavimas = kiekis * USD_Parduoti;
+
+            cout << kiekis << " USD yra lygus: " << USD_pardavimas << " EUR";
+            break;
+        }
+        case 3: {
+            cout << "Iveskite kieki:" << endl;
+
+            float kiekis = 0;
+            float INR_pardavimas = 0;
+            cin >> kiekis;
+
+            INR_pardavimas = kiekis * INR_Parduoti;
+
+            cout << kiekis << " INR yra lygus: " << INR_pardavimas << " EUR";
+            break;
+        }
+        }
+        break;
+    }
+    case 3: {
+        cout << "Kuria valiuta norite pirkti:" << endl;
+        cout << "1. GBP" << endl;
+        cout << "2. USD" << endl;
+        cout << "3. INR" << endl;
+
+        int pasirinkimas_1 = 0;
+        cin >> pasirinkimas_1;
+
+        switch (pasirinkimas_1) {
+        case 1: {
+            cout << "Iveskite kieki:" << endl;
+
+            float kiekis = 0;
+            float GBP_pirkimas = 0;
+            cin >> kiekis;
+
+            GBP_pirkimas = kiekis * GBP_Pirkti;
+
+            cout << kiekis << " GBP kainuos: " << GBP_pirkimas << " EUR";
+            break;
+        }
+        case 2: {
+            cout << "Iveskite kieki:" << endl;
+
+            float kiekis = 0;
+            float USD_pirkimas = 0;
+            cin >> kiekis;
+
+            USD_pirkimas = kiekis * USD_Pirkti;
+
+            cout << kiekis << " USD kainuos: " << USD_pirkimas << " EUR";
+            break;
+        }
+        case 3: {
+            cout << "Iveskite kieki:" << endl;
+
+            float kiekis = 0;
+            float INR_pirkimas = 0;
+            cin >> kiekis;
+
+            INR_pirkimas = kiekis * INR_Pirkti;
+
+            cout << kiekis << " INR kainuos: " << INR_pirkimas << " EUR";
+            break;
+        }
+        }
+        break;
+    }
+    }
+
+    return 0;
+}

@@ -1,0 +1,113 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+//skaicio generavimas
+int genAtsitiktinis() {
+    return rand() % 100 + 1;
+}
+
+// zaidimo funkcija
+void zaidimas() {
+    int atsitiktinisSkaicius = genAtsitiktinis();
+    int spejimas;
+    cout << "Atspekite skaiciu nuo 1 iki 100:" << endl;
+    while (true) {
+        cout << "Jusu spejimas: ";
+        cin >> spejimas;
+
+        if (spejimas > atsitiktinisSkaicius) {
+            cout << "Per didelis!" << endl;
+        } else if (spejimas < atsitiktinisSkaicius) {
+            cout << "Per mazas!" << endl;
+        } else {
+            cout << "Atspejote teisingai!" << endl;
+            break;
+        }
+    }
+}
+//fizzbuzz funkcija
+void fizzbuzz(int n) {
+    for (int i = 1; i <= n; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            cout << "FizzBuzz" << endl;
+        } else if (i % 3 == 0) {
+            cout << "Fizz" << endl;
+        } else if (i % 5 == 0) {
+            cout << "Buzz" << endl;
+        } else {
+            cout << i << endl;
+        }
+    }
+}
+
+int main() {
+    int pasirinkimas;
+    while (true) {
+        cout << "Pasirinkite funkcija:" << endl;
+        cout << "1. Patikrinti ar raide yra balse" << endl;
+        cout << "2. Rasti didziausia bendra dalikli" << endl;
+        cout << "3. Mini zaidimas" << endl;
+        cout << "4. FizzBuzz" << endl;
+        cout << "0. Baigti programos darba" << endl;
+
+        cout << "Iveskite pasirinkima: ";
+        cin >> pasirinkimas;
+
+        switch (pasirinkimas) {
+            case 1: {
+                //Patikrinti ar raide yra balse
+                char raide;
+                cout << "Iveskite raide: ";
+                cin >> raide;
+
+                string balse = "AaEeĘęĖėIiĮįYyOoUuŲųŪū";
+
+                for (int i = 0; i < balse.length(); i++) {
+                    if (raide == balse[i]) {
+                        cout <<"true"<< endl;
+                        break;
+                    } else if (i == balse.length() - 1) {
+                        cout <<"false"<< endl;
+                    }
+                }
+                break;
+            }
+            case 2: {
+                //Rasti didziausia bendra dalikli
+                int sk1, sk2;
+                cout << "Iveskite du skaicius: ";
+                cin >> sk1 >> sk2;
+
+                while (sk2 != 0) {
+                    int dal = sk2;
+                    sk2 = sk1 % sk2;
+                    sk1 = dal;
+                    
+                }
+                 
+
+               cout << "Didziausias bendras daliklis: " << sk1 << endl;
+                break;
+            }
+            case 3: {
+               zaidimas();
+               break;
+            }
+            case 4: {
+            int n;
+                cout << "Iveskite teigiama skaiciu: ";
+                cin >> n;
+                fizzbuzz(n);
+                break;
+            }
+            case 0:
+                return 0;
+            default:
+                cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
+        }
+    }
+}
