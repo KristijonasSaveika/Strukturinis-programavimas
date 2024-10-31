@@ -95,8 +95,6 @@ int main() {
                 cout << "Įveskite du skaičius: ";
                 cin >> sk1 >> sk2;
                 cout << "Didžiausias bendras daliklis: " << didziausiasBendrasDaliklis(sk1, sk2) << "\n";
-               cout << "Didziausias bendras daliklis: " << sk1 << endl;
-                break;
             }
             case 3: {
                zaidimas();
