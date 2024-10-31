@@ -5,6 +5,24 @@
 
 using namespace std;
 
+bool arBalse (char raide){
+                string balse = "AaEeĘęĖėIiĮįYyOoUuŲųŪū";
+                for (int i = 0; i < balse.length(); i++) {
+                    if (raide == balse[i]) {
+                        return true;
+                    }  
+                    }
+                    return false;
+                }
+int didziausiasBendras (int sk1, int sk2) {
+                    while (sk2 != 0) {
+                    int dal = sk2;
+                    sk2 = sk1 % sk2;
+                    sk1 = dal;
+                }
+                return sk1;
+}                
+
 //skaicio generavimas
 int genAtsitiktinis() {
     return rand() % 100 + 1;
@@ -60,20 +78,15 @@ int main() {
 
         switch (pasirinkimas) {
             case 1: {
-                //Patikrinti ar raide yra balse
                 char raide;
                 cout << "Iveskite raide: ";
                 cin >> raide;
-
-                string balse = "AaEeĘęĖėIiĮįYyOoUuŲųŪū";
-
-                for (int i = 0; i < balse.length(); i++) {
-                    if (raide == balse[i]) {
-                        cout <<"true"<< endl;
-                        break;
-                    } else if (i == balse.length() - 1) {
-                        cout <<"false"<< endl;
-                    }
+                
+                if ( arBalse (raide)) {
+                    cout << "true" << endl;
+                }
+                else {
+                    cout << "false" << endl;
                 }
                 break;
             }
@@ -82,16 +95,7 @@ int main() {
                 int sk1, sk2;
                 cout << "Iveskite du skaicius: ";
                 cin >> sk1 >> sk2;
-
-                while (sk2 != 0) {
-                    int dal = sk2;
-                    sk2 = sk1 % sk2;
-                    sk1 = dal;
-                    
-                }
-                 
-
-               cout << "Didziausias bendras daliklis: " << sk1 << endl;
+                cout << "Didziausias bendras daliklis: " << didziausiasBendras (sk1,sk2) << endl;
                 break;
             }
             case 3: {
