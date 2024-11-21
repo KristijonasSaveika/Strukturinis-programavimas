@@ -1,0 +1,123 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+const char ABECELE[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+                          'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+
+// Funkcijos deklaracijos
+void sifruotiSuAbecele(char tekstas[], char raktas[], char rezultatas[]);
+void desifruotiSuAbecele(char tekstas[], char raktas[], char rezultatas[]);
+void sifruotiSuASC(char tekstas[], char raktas[], char rezultatas[]);
+void desifruotiSuASC(char tekstas[], char raktas[], char rezultatas[]);
+
+int main() {
+    char tekstas[100], rezultatas[100], raktas[100];
+    int pasirinkimas;
+
+    cout << "Iveskite teksta: ";
+    cin.getline(tekstas, 100);
+
+    cout << "Iveskite rakta: ";
+    cin.getline(raktas, 100);
+
+    do {
+        // Meniu pasirinkimams
+        cout << "\nPasirinkite veiksmą:\n";
+        cout << "1. Uzsifruoti naudojant abecele\n";
+        cout << "2. Uzsifruoti naudojant ASCII\n";
+        cout << "0. Baigti\n";
+        cout << "Pasirinkimas: ";
+        cin >> pasirinkimas;
+        cin.ignore();
+
+        switch (pasirinkimas) {
+            case 1:
+                sifruotiSuAbecele(tekstas, raktas, rezultatas);
+                cout << "Uzsifruotas tekstas: " << rezultatas << endl;
+                desifruotiSuAbecele(tekstas, raktas, rezultatas);
+                cout << "Desifruotas tekstas: " << rezultatas << endl;
+                break;
+            case 2:
+                sifruotiSuASC(tekstas, raktas, rezultatas);
+                cout << "Uzsifruotas tekstas: " << rezultatas << endl;
+                desifruotiSuASC(tekstas, raktas, rezultatas);
+                cout << "Desiruotas tekstas: " << rezultatas << endl;
+            case 0:
+                cout << "Programa baigta.\n";
+                break;
+            default:
+                cout << "Neteisingas pasirinkimas!\n";
+        }
+    } while (pasirinkimas != 0);
+
+    return 0;
+}
+
+// Funkcija sifruoti naudojant abecele
+void sifruotiSuAbecele(char tekstas[], char raktas[], char rezultatas[]) {
+    int tekstoIlgis = strlen(tekstas);
+    int raktoIlgis = strlen(raktas);
+
+    for (int i = 0; i < tekstoIlgis; i++) {
+        if (isalpha(tekstas[i])) {
+            char raide = toupper(tekstas[i]);
+            char raktoRaide = toupper(raktas[i % raktoIlgis]);
+            int m = raide - 'A';
+            int k = raktoRaide - 'A';
+            int c = (m + k) % 26;
+            rezultatas[i] = ABECELE[c];
+        } else {
+            rezultatas[i] = tekstas[i];
+        }
+    }
+    rezultatas[tekstoIlgis] = '\0';
+}
+
+// Funkcija desifruoti naudojant abecele
+void desifruotiSuAbecele(char tekstas[], char raktas[], char rezultatas[]) {
+    int tekstoIlgis = strlen(tekstas);
+    int raktoIlgis = strlen(raktas);
+
+    for (int i = 0; i < tekstoIlgis; i++) {
+        if (isalpha(tekstas[i])) {
+            char raide = toupper(tekstas[i]);
+            char raktoRaide = toupper(raktas[i % raktoIlgis]);
+            int m = raide - 'A';
+            int k = raktoRaide - 'A';
+            int c = (m - k + 26) % 26;
+            rezultatas[i] = ABECELE[c];
+        } else {
+            rezultatas[i] = tekstas[i];
+        }
+    }
+    rezultatas[tekstoIlgis] = '\0';
+}
+
+//Funkcija sifruoti naudojant ASCII
+void sifruotiSuASC(char tekstas [], char raktas [], char rezultatas[]) {
+    int tekstoIlgis = strlen(tekstas);
+    int raktoIlgis = strlen(raktas);
+    
+    for (int i = 0; i < tekstoIlgis; i++) {
+        char simbolis = tekstas[i];
+        char raktoSimbolis = raktas[i % raktoIlgis];
+        rezultatas[i] = (simbolis + raktoSimbolis) % 126;
+    }
+    rezultatas[tekstoIlgis] = '\0';
+}
+
+//Funkcija desifruoti naudojant ASCII
+void desifruotiSuASC(char tekstas [], char raktas [], char rezultatas[]){
+    int tekstoIlgis = strlen(tekstas);
+    int raktoIlgis = strlen(raktas); 
+
+    for (int i = 0; i < tekstoIlgis; i++) {
+        char simbolis = tekstas[i];
+        char raktoSimbolis = raktas[i % raktoIlgis];
+        rezultatas[i] = (simbolis - raktoSimbolis + 126) % 126;
+    }
+    rezultatas[tekstoIlgis] = '\0';
+}
+
