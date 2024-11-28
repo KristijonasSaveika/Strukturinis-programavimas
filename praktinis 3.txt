@@ -36,14 +36,15 @@ int main() {
             case 1:
                 sifruotiSuAbecele(tekstas, raktas, rezultatas);
                 cout << "Uzsifruotas tekstas: " << rezultatas << endl;
-                desifruotiSuAbecele(tekstas, raktas, rezultatas);
+                desifruotiSuAbecele(rezultatas, raktas, rezultatas);
                 cout << "Desifruotas tekstas: " << rezultatas << endl;
                 break;
             case 2:
                 sifruotiSuASC(tekstas, raktas, rezultatas);
                 cout << "Uzsifruotas tekstas: " << rezultatas << endl;
-                desifruotiSuASC(tekstas, raktas, rezultatas);
-                cout << "Desiruotas tekstas: " << rezultatas << endl;
+                desifruotiSuASC(rezultatas, raktas, rezultatas);
+                cout << "Desifruotas tekstas: " << rezultatas << endl;
+                break;
             case 0:
                 cout << "Programa baigta.\n";
                 break;
@@ -95,28 +96,30 @@ void desifruotiSuAbecele(char tekstas[], char raktas[], char rezultatas[]) {
     rezultatas[tekstoIlgis] = '\0';
 }
 
-//Funkcija sifruoti naudojant ASCII
-void sifruotiSuASC(char tekstas [], char raktas [], char rezultatas[]) {
+// Funkcija sifruoti naudojant ASCII
+void sifruotiSuASC(char tekstas[], char raktas[], char rezultatas[]) {
     int tekstoIlgis = strlen(tekstas);
     int raktoIlgis = strlen(raktas);
-    
+
     for (int i = 0; i < tekstoIlgis; i++) {
         char simbolis = tekstas[i];
         char raktoSimbolis = raktas[i % raktoIlgis];
-        rezultatas[i] = (simbolis + raktoSimbolis) % 126;
+        int uzsifruotas = (simbolis + raktoSimbolis - 64) % 94 + 32;
+        rezultatas[i] = uzsifruotas;
     }
     rezultatas[tekstoIlgis] = '\0';
 }
 
-//Funkcija desifruoti naudojant ASCII
-void desifruotiSuASC(char tekstas [], char raktas [], char rezultatas[]){
+// Funkcija desifruoti naudojant ASCII
+void desifruotiSuASC(char tekstas[], char raktas[], char rezultatas[]) {
     int tekstoIlgis = strlen(tekstas);
-    int raktoIlgis = strlen(raktas); 
+    int raktoIlgis = strlen(raktas);
 
     for (int i = 0; i < tekstoIlgis; i++) {
         char simbolis = tekstas[i];
         char raktoSimbolis = raktas[i % raktoIlgis];
-        rezultatas[i] = (simbolis - raktoSimbolis + 126) % 126;
+        int desifruotas = (simbolis - raktoSimbolis + 94) % 94 + 32;
+        rezultatas[i] = desifruotas;
     }
     rezultatas[tekstoIlgis] = '\0';
 }
