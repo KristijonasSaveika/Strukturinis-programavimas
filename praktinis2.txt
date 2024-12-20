@@ -5,6 +5,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 //balses tikrinimas
 bool arBalse(char raide) {
     string balse = "AaEeĘęĖėIiĮįYyOoUuŲųŪū";
@@ -25,6 +26,25 @@ int didziausiasBendrasDaliklis(int sk1, int sk2) {
     }
     return sk1;
 }
+=======
+bool arBalse (char raide){
+                string balse = "AaEeĘęĖėIiĮįYyOoUuŲųŪū";
+                for (int i = 0; i < balse.length(); i++) {
+                    if (raide == balse[i]) {
+                        return true;
+                    }  
+                    }
+                    return false;
+                }
+int didziausiasBendras (int sk1, int sk2) {
+                    while (sk2 != 0) {
+                    int dal = sk2;
+                    sk2 = sk1 % sk2;
+                    sk1 = dal;
+                }
+                return sk1;
+}                
+>>>>>>> 38ad84feec9edcafb235a53f05e468f455a44d69
 
 //skaicio generavimas
 int genAtsitiktinis() {
@@ -66,6 +86,7 @@ void fizzbuzz(int n) {
 }
 
 int main() {
+    srand(time(0));
     int pasirinkimas;
     while (true) {
         cout << "Pasirinkite funkcija:" << endl;
@@ -83,9 +104,17 @@ int main() {
                 char raide;
                 cout << "Įveskite raidę: ";
                 cin >> raide;
+<<<<<<< HEAD
                 if (arBalse(raide)) {
                     cout << "true" << endl;
                 } else {
+=======
+                
+                if ( arBalse (raide)) {
+                    cout << "true" << endl;
+                }
+                else {
+>>>>>>> 38ad84feec9edcafb235a53f05e468f455a44d69
                     cout << "false" << endl;
                 }
                 break;
@@ -94,7 +123,12 @@ int main() {
                 int sk1, sk2;
                 cout << "Įveskite du skaičius: ";
                 cin >> sk1 >> sk2;
+<<<<<<< HEAD
                 cout << "Didžiausias bendras daliklis: " << didziausiasBendrasDaliklis(sk1, sk2) << "\n";
+=======
+                cout << "Didziausias bendras daliklis: " << didziausiasBendras (sk1,sk2) << endl;
+                break;
+>>>>>>> 38ad84feec9edcafb235a53f05e468f455a44d69
             }
             case 3: {
                zaidimas();
